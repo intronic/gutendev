@@ -1,5 +1,6 @@
 import 'react-hot-loader/patch';
 import { AppContainer } from 'react-hot-loader';
+import '../gutenberg/post-content';
 
 const myrender = (Component, row) => {
   wp.element.render(
@@ -22,10 +23,10 @@ const setupBlock = (slug, attributes) => {
 
 window.mjp = () => {
   // wp.editor.createEditorInstance( 'editor', { value: 'I am here' });
-
-  setupBlock("core/text", { value: '<p>This is core/text</p>' })
-  setupBlock("core/tinymce", { value: '<p>This is a TINYMCE block OK</p>' })
-  // setupBlock('core/heading', { nodeName: 'h2', value: 'This is a heading' });
+  wp.editor.createEditorInstance( 'editor', window._wpGutenbergPost );
+  // setupBlock("core/text", { value: '<p>This is core/text</p>' })
+  // // setupBlock("core/tinymce", { value: '<p>This is a TINYMCE block OK</p>' })
+  // // setupBlock('core/heading', { nodeName: 'h2', value: 'This is a heading' });
   // setupBlock("core/list", {
   //   nodeName: 'ol',
   //   items: [
