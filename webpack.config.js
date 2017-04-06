@@ -18,6 +18,7 @@ const config = {
 		filename: '[name]/build/index.js',
 		path: __dirname,
 		library: [ 'wp', '[name]' ],
+		libraryTarget: 'this'
 	},
 	externals: {
 		react: 'React',
@@ -43,6 +44,8 @@ const config = {
 						{
 							loader: 'sass-loader',
 							query: {
+								includePaths: [ 'editor/assets/stylesheets' ],
+								data: '@import "variables";',
 								outputStyle: 'production' === process.env.NODE_ENV ?
 									'compressed' : 'nested'
 							}
@@ -65,7 +68,10 @@ const config = {
 				]
 			}
 		} )
-	]
+	],
+	stats: {
+		children: false
+	}
 };
 
 switch ( process.env.NODE_ENV ) {
