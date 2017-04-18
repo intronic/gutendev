@@ -5,6 +5,7 @@
 const glob = require( 'glob' );
 const webpack = require( 'webpack' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const ResolveEntryModulesPlugin = require( 'resolve-entry-modules-webpack-plugin' );
 
 const config = {
 	entry: { // https://github.com/webpack/webpack/tree/master/examples/multi-part-library
@@ -56,6 +57,7 @@ const config = {
 		]
 	},
 	plugins: [
+		new ResolveEntryModulesPlugin(),
 		new ExtractTextPlugin( {
 			filename: './[name]/build/style.css'
 		} ),
@@ -68,6 +70,7 @@ const config = {
 				]
 			}
 		} )
+
 	],
 	stats: {
 		children: false
